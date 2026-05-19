@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.daixueyun3377.nl2sql.autoconfigure.Nl2SqlAutoConfiguration

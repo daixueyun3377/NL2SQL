@@ -1,0 +1,23 @@
+{
+  "default": {
+    "domain": "default",
+    "tables": [],
+    "relationHints": "",
+    "businessRules": "",
+    "examples": []
+  },
+  "domains": {
+    "job": {
+      "domain": "job",
+      "tables": ["job_basic_info", "job_address", "city", "brand"],
+      "relationHints": "job_basic_info.id = job_address.job_id; job_address.city_id = city.id",
+      "businessRules": "status = 1 means active job posting",
+      "examples": [
+        {
+          "question": "how many active jobs",
+          "sql": "SELECT COUNT(*) FROM job_basic_info WHERE status = 1"
+        }
+      ]
+    }
+  }
+}
