@@ -37,10 +37,15 @@
 
 ## 发布命令
 
-在仓库根目录（已检出 `v1.0.0` 标签）：
+在仓库根目录（已检出 `v1.0.0` 标签）。
+
+**务必使用项目专用 settings**，避免全局 `~/.m2/settings.xml` 里的 `alternateDeploymentRepository`（如阿里云私服）劫持 `deploy`：
+
+1. 在本地创建 `.mvn/settings-central-deploy.xml`（目录已 gitignore，可参考下文 `~/.m2/settings.xml` 示例），填入 Central 用户名/Token 与 `gpg.keyname`
+2. 执行：
 
 ```bash
-mvn clean deploy -Prelease
+mvn clean deploy -Prelease -s .mvn/settings-central-deploy.xml
 ```
 
 `-Prelease` 会启用：源码包、Javadoc、GPG 签名、Central Publisher 上传。
