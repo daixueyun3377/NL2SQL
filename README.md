@@ -79,13 +79,15 @@
 </dependency>
 ```
 
-本地安装本仓库：
+本地安装本仓库（**自动安装到** `/Users/qianhua/workspaces/tools/repository`，由 `.mvn/settings.xml` 配置）：
 
 ```bash
 git clone git@github.com:daixueyun3377/NL2SQL.git
 cd NL2SQL
 mvn clean install
 ```
+
+> 在 NL2SQL 目录下执行 `mvn` 时会自动加载 `.mvn/maven.config`。Sponge 等其它项目需在 `settings.xml` 中配置同一 `localRepository`，才能解析到 `0.1.0-SNAPSHOT`。
 
 ---
 
@@ -430,7 +432,10 @@ if (result.isSuccess()) {
 
 ```bash
 mvn clean test
+mvn clean install   # 安装到 /Users/qianhua/workspaces/tools/repository
 ```
+
+**本地仓库路径**：`/Users/qianhua/workspaces/tools/repository`（项目 `.mvn/settings.xml`，仅在本仓库执行 Maven 时生效）。
 
 ---
 

@@ -22,7 +22,7 @@ cp /path/to/NL2SQL/docs/templates/llm-prompt.template.md src/main/resources/nl2s
 安装 `nl2sql-core` 后，模板也在 jar 的 `nl2sql/templates/` 下：
 
 ```bash
-jar xf ~/.m2/repository/io/github/daixueyun3377/nl2sql-core/0.1.0-SNAPSHOT/nl2sql-core-0.1.0-SNAPSHOT.jar \
+jar xf /Users/qianhua/workspaces/tools/repository/io/github/daixueyun3377/nl2sql-core/0.1.0-SNAPSHOT/nl2sql-core-0.1.0-SNAPSHOT.jar \
   nl2sql/templates/semantic-catalog.template.md \
   nl2sql/templates/llm-prompt.template.md
 ```
