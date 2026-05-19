@@ -1,7 +1,8 @@
 # NL2SQL
 
 [![Java](https://img.shields.io/badge/Java-8-orange)](https://www.oracle.com/java/)
-[![Maven](https://img.shields.io/badge/Maven-3.6%2B-blue)](https://maven.apache.org/)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.daixueyun3377/nl2sql-spring-boot-starter?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.daixueyun3377/nl2sql-spring-boot-starter)
+[![Release](https://img.shields.io/github/v/release/daixueyun3377/NL2SQL)](https://github.com/daixueyun3377/NL2SQL/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 可扩展的 **Java NL2SQL 引擎**：将自然语言问题转为 **安全的只读 SQL** 并执行，返回结构化结果。适用于 Spring Boot 服务、AgentMark Tool、BI/运营后台等场景。
@@ -30,6 +31,7 @@
 - [架构](#架构)
 - [扩展点](#扩展点)
 - [开发](#开发)
+- [发布与 Maven Central](#发布与-maven-central)
 - [Roadmap](#roadmap)
 - [License](#license)
 
@@ -59,13 +61,13 @@
 
 ## Installation
 
-在业务项目 `pom.xml` 中引入（需先安装到本地或私服）：
+### Maven Central（推荐）
 
 ```xml
 <dependency>
   <groupId>io.github.daixueyun3377</groupId>
   <artifactId>nl2sql-spring-boot-starter</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -75,19 +77,38 @@
 <dependency>
   <groupId>io.github.daixueyun3377</groupId>
   <artifactId>nl2sql-core</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-本地安装本仓库（**自动安装到** `/Users/qianhua/workspaces/tools/repository`，由 `.mvn/settings.xml` 配置）：
+使用 BOM 统一版本：
+
+```xml
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.daixueyun3377</groupId>
+      <artifactId>nl2sql-bom</artifactId>
+      <version>1.0.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
+
+### 本地开发安装
+
+从源码构建（安装到 `/Users/qianhua/workspaces/tools/repository`，由 `.mvn/settings.xml` 配置）：
 
 ```bash
 git clone git@github.com:daixueyun3377/NL2SQL.git
 cd NL2SQL
+git checkout v1.0.0   # 或 main
 mvn clean install
 ```
 
-> 在 NL2SQL 目录下执行 `mvn` 时会自动加载 `.mvn/maven.config`。Sponge 等其它项目需在 `settings.xml` 中配置同一 `localRepository`，才能解析到 `0.1.0-SNAPSHOT`。
+> 在 NL2SQL 目录下执行 `mvn` 时会自动加载 `.mvn/maven.config`。其它项目需在 `settings.xml` 中配置同一 `localRepository` 才能解析本地构建产物。
 
 ---
 
@@ -439,16 +460,35 @@ mvn clean install   # 安装到 /Users/qianhua/workspaces/tools/repository
 
 ---
 
+## 发布与 Maven Central
+
+| 项 | 说明 |
+|----|------|
+| 当前版本 | **1.0.0** |
+| Git 标签 | [`v1.0.0`](https://github.com/daixueyun3377/NL2SQL/releases/tag/v1.0.0) |
+| 发布说明 | [GitHub Releases](https://github.com/daixueyun3377/NL2SQL/releases) |
+| 中央仓库发布步骤 | [docs/MAVEN_CENTRAL.md](docs/MAVEN_CENTRAL.md) |
+
+维护者发布到 Maven Central：
+
+```bash
+mvn clean deploy -Prelease
+```
+
+需在 `~/.m2/settings.xml` 配置 Sonatype Central 凭据（`server id=central`）与 GPG 签名，详见 [docs/MAVEN_CENTRAL.md](docs/MAVEN_CENTRAL.md)。
+
+---
+
 ## Roadmap
 
 | 阶段 | 内容 | 状态 |
 |------|------|------|
 | P0 | Maven 多模块骨架 | ✅ |
 | P0.5 | MD 语义层 + Prompt 模板 | ✅ |
+| **1.0.0** | 合并 main、GitHub Release、Maven Central | ✅ |
 | P1 | 与 Sponge Demo 行为对齐 | ⏳ |
 | P2 | sponge 引入 starter、删除重复代码 | ⏳ |
 | P3 | Nacos / JDBC 语义层（可选） | ⏳ |
-| P4 | 发布 Maven Central / 私服 | ⏳ |
 
 ---
 

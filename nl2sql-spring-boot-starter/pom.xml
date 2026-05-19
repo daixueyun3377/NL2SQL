@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.github.daixueyun3377</groupId>
         <artifactId>nl2sql-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>nl2sql-spring-boot-starter</artifactId>
@@ -18,7 +18,6 @@
         <dependency>
             <groupId>io.github.daixueyun3377</groupId>
             <artifactId>nl2sql-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
